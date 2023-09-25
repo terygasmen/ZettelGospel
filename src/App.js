@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import NoteList from './components/notecard-list/NoteList';
+import MenuBar from './components/menubar/MenuBar';
+import { createNote } from './db/notes'; // Import the createNote function
 
 function App() {
+  const [isTableView, setTableView] = useState(false);
+
+  const handleNewNoteClick = async () => {
+    // Create a new note in the database
+    await createNote('', '', '', ''); // Provide initial values or empty strings as needed
+  };
+
+  const handleTableViewClick = () => {
+    setTableView(!isTableView);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <MenuBar
+        onNewNoteClick={handleNewNoteClick}
+        onTableViewClick={handleTableViewClick}
+      />
+      <div className="main">
+        <NoteList isTableView={isTableView} />
+      </div>
     </div>
   );
 }
