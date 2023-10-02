@@ -4,10 +4,10 @@
 /node_modules
 /.pnp
 .pnp.js
-/src/db/db
 
 # testing
 /coverage
+/Users/terygasmen/Documents/cit490/zettelgospel/src/db/db.js
 
 # production
 /build
