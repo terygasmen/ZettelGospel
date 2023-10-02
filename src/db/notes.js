@@ -1,4 +1,4 @@
-const Note = require('./db'); // Import the Note model
+const Note = require('./db');
 
 // Create a new note
 async function createNote(address, title, content, citation) {

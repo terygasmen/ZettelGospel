@@ -20,6 +20,4 @@ const noteSchema = new mongoose.Schema({
   citation: String,
 });
 
-const Note = mongoose.model('Note', noteSchema);
-
-
+module.exports = mongoose.model('Note', noteSchema);
