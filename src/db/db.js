@@ -17,7 +17,7 @@ const noteSchema = new mongoose.Schema({
   address: String,
   title: String,
   content: String,
-  citation: String,
+  citation: String
 });
 
 module.exports = mongoose.model('Note', noteSchema);
