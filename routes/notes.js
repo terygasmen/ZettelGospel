@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Note = require('../src/db/db'); // Import your Mongoose model
+const Note = require('../src/db/db'); // Import Mongoose model
 
 // Create a new note
 router.post('/notes', async (req, res) => {

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import NoteList from './components/notecard-list/NoteList';
 import MenuBar from './components/menubar/MenuBar';
-import { createNote } from './db/notes'; // Import the createNote function
+import { createNote } from './db/notes'; 
 
 function App() {
   const [isTableView, setTableView] = useState(false);
