@@ -9,12 +9,17 @@
   --border-radius: 0.5rem;
   --h1: 2rem;
   --h2: 1.5rem;
+  --icon-color: #c1c8ce;
 }
 
 body {
   font-family: var(--main-font);
   background-color: var(--black);
   color: var(--white);
+}
+
+i {
+  color: var(--icon-color);
 }
 
 /* Main App */
