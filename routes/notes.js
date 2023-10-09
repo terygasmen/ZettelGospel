@@ -26,6 +26,20 @@ router.get('/notes', async (req, res) => {
   }
 });
 
+// Get a single note by ID
+router.get('/notes/:id', async (req, res) => {
+  try {
+    const note = await Note.findById(req.params.id);
+    if (!note) {
+      return res.status(404).json({ error: 'Note not found' });
+    }
+    res.status(200).json(note);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 // Update a note by ID
 router.put('/notes/:id', async (req, res) => {
   try {
