@@ -12,6 +12,21 @@ const noteSchema = new Schema({
 
 const Note = mongoose.model('Note', noteSchema);
 
+const scriptureSchema = new mongoose.Schema({
+  volume_title: String,
+  book_title: String,
+  book_short_title: String,
+  chapter_number: Number,
+  verse_number: Number,
+  verse_title: String,
+  verse_short_title: String,
+  scripture_text: String,
+}, {
+  collection: 'scriptures'
+});
+
+const Scripture = mongoose.model('Scripture', scriptureSchema);
+
 // Create a new note
 async function createNote(address, title, content, citation) {
   const newNote = new Note({ address, title, content, citation });
@@ -40,6 +55,7 @@ async function deleteNote(noteId) {
 
 module.exports = {
   Note,
+  Scripture,
   createNote,
   getNotes,
   getNoteById,

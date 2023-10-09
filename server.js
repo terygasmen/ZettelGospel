@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const noteRoutes = require('./routes/notes');
+const scriptureRoutes = require('./routes/scriptures');
 
 const app = express();
 app.use(express.json());
@@ -16,7 +17,10 @@ db.once('open', () => {
   console.log('Connected to MongoDB');
   
   // API endpoints for notes
-  app.use('/api', noteRoutes);
+  app.use('/api/notes', noteRoutes);
+  
+  // API endpoints for scriptures
+  app.use('/api/scriptures', scriptureRoutes);
 
   const PORT = process.env.PORT || 3001;
   app.listen(PORT, () => {
