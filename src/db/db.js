@@ -53,6 +53,16 @@ async function deleteNote(noteId) {
   return Note.findByIdAndRemove(noteId);
 }
 
+// Get all scriptures
+async function getScriptures() {
+  return Scripture.find({});
+}
+
+// Get a single scripture by ID
+async function getScriptureById(scriptureId) {
+  return Scripture.findById(scriptureId);
+}
+
 module.exports = {
   Note,
   Scripture,
@@ -61,4 +71,6 @@ module.exports = {
   getNoteById,
   updateNote,
   deleteNote,
+  getScriptures,
+  getScriptureById
 };
