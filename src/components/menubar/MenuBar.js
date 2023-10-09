@@ -6,16 +6,16 @@ function MenuBar({ onNewNoteClick, onTableViewClick }) {
   return (
     <div className="menu-bar">
       <div className="menu-item logo">
-        <img src='../../logo.svg' alt='ZettelGospel Logo'/>
+        <img src='../../logo.png' alt='ZettelGospel Logo'/>
       </div>
       <div className="menu-item" onClick={onNewNoteClick}>
-        <FontAwesomeIcon icon={faMagnifyingGlass}/>
+        <FontAwesomeIcon icon={faMagnifyingGlass} style={{color: "#c1c8ce",}}/>
       </div>
       <div className="menu-item" onClick={onNewNoteClick}>
-        <FontAwesomeIcon icon={faPen}/>  
+        <FontAwesomeIcon icon={faPen} style={{color: "#c1c8ce",}} />
       </div>
       <div className="menu-item" onClick={onTableViewClick}>
-        <FontAwesomeIcon icon={faTable}/>
+        <FontAwesomeIcon icon={faTable} style={{color: "#c1c8ce",}}/>
       </div>
     </div>
   );

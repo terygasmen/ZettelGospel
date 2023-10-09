@@ -9,17 +9,12 @@
   --border-radius: 0.5rem;
   --h1: 2rem;
   --h2: 1.5rem;
-  --icon-color: #c1c8ce;
 }
 
 body {
   font-family: var(--main-font);
   background-color: var(--black);
   color: var(--white);
-}
-
-i {
-  color: var(--icon-color);
 }
 
 /* Main App */
@@ -111,18 +106,13 @@ i {
 
 .menu-item {
   width: 100%;
-  padding: 10px 0;
+  padding: 15px 0;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   color: white;
   font-size: 20px;
-}
-
-.menu-item.logo {
-  font-size: 24px;
-  font-weight: bold;
 }
 
 .menu-item:hover {
