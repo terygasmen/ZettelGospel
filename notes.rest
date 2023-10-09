@@ -12,7 +12,7 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:3001/api/notes/your_note_id
+PUT http://localhost:3001/api/notes/652233f65eb3376b3177d6ec
 Content-Type: application/json
 
 {
@@ -23,7 +23,7 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3001/api/notes/your_note_id
+DELETE http://localhost:3001/api/notes/652233f65eb3376b3177d6ec
 
 
 
