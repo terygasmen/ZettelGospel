@@ -63,6 +63,25 @@ async function getScriptureById(scriptureId) {
   return Scripture.findById(scriptureId);
 }
 
+// Get scriptures by volume, book, and chapter
+async function getScripturesByVolumeBookChapter(volumeTitle, bookTitle, chapterNumber) {
+  return Scripture.find({
+    volume_title: volumeTitle,
+    book_title: bookTitle,
+    chapter_number: chapterNumber,
+  });
+}
+
+// Get a single scripture by volume, book, chapter, and verse
+async function getScriptureByVolumeBookChapterVerse(volumeTitle, bookTitle, chapterNumber, verseNumber) {
+  return Scripture.findOne({
+    volume_title: volumeTitle,
+    book_title: bookTitle,
+    chapter_number: chapterNumber,
+    verse_number: verseNumber,
+  });
+}
+
 module.exports = {
   Note,
   Scripture,
@@ -72,5 +91,7 @@ module.exports = {
   updateNote,
   deleteNote,
   getScriptures,
-  getScriptureById
+  getScriptureById,
+  getScripturesByVolumeBookChapter,
+  getScriptureByVolumeBookChapterVerse
 };

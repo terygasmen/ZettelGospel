@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import NoteCard from '../notecard/NoteCard';
-import { getNotes, createNote, updateNote, deleteNote } from '../../db/db'; // Import CRUD functions
+import { getNotes } from '../../db/db';
 
 function NoteList() {
   const [notes, setNotes] = useState([]);
@@ -9,86 +9,30 @@ function NoteList() {
   useEffect(() => {
     async function fetchNotes() {
       try {
-        const fetchedNotes = await getNotes();
-        setNotes(fetchedNotes);
+        const fetchedNotes = await getNotes(); // Fetch notes from the database
+        setNotes(fetchedNotes); // Set notes in the local state
       } catch (error) {
         console.error('Error fetching notes:', error);
       }
     }
 
-    fetchNotes();
-  }, []);
-
-  const handleContentChange = async (id, newContent) => {
-    try {
-      // Update the note's content in the database
-      await updateNote(id, { content: newContent });
-      // Refresh the list of notes
-      const fetchedNotes = await getNotes();
-      setNotes(fetchedNotes);
-    } catch (error) {
-      console.error('Error updating note content:', error);
-    }
-  };
-
-  const handleCitationChange = async (id, newCitation) => {
-    try {
-      // Update the note's citation in the database
-      await updateNote(id, { citation: newCitation });
-      // Refresh the list of notes
-      const fetchedNotes = await getNotes();
-      setNotes(fetchedNotes);
-    } catch (error) {
-      console.error('Error updating note citation:', error);
-    }
-  };
-
-  const addNote = async () => {
-    try {
-      // Create a new note in the database with default values
-      const defaultNote = {
-        address: 'Default Address',
-        title: 'Default Title',
-        content: 'Default Content',
-        citation: 'Default Citation',
-      };
-      await createNote(defaultNote.address, defaultNote.title, defaultNote.content, defaultNote.citation);
-      // Refresh the list of notes
-      const fetchedNotes = await getNotes();
-      setNotes(fetchedNotes);
-    } catch (error) {
-      console.error('Error creating note:', error);
-    }
-  };
-
-  const removeNote = async (id) => {
-    try {
-      // Delete the note from the database
-      await deleteNote(id);
-      // Refresh the list of notes
-      const fetchedNotes = await getNotes();
-      setNotes(fetchedNotes);
-    } catch (error) {
-      console.error('Error deleting note:', error);
-    }
-  };
+    fetchNotes(); // Call the fetchNotes function
+  }, []); // Empty dependency array ensures this effect runs once after the initial render
 
   return (
     <div className="note-list">
       {notes.map((note) => (
         <div key={note._id}>
+          {/* Pass note data to NoteCard component */}
           <NoteCard
             address={note.address}
             title={note.title}
             content={note.content}
             citation={note.citation}
-            onContentChange={(newContent) => handleContentChange(note._id, newContent)}
-            onCitationChange={(newCitation) => handleCitationChange(note._id, newCitation)}
+            // Pass unique ID (note._id) if needed for update or delete operations
           />
-          <button onClick={() => removeNote(note._id)}>Remove</button>
         </div>
       ))}
-      <button onClick={addNote}>Add Note</button>
     </div>
   );
 }
