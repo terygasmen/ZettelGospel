@@ -65,7 +65,7 @@ async function getScriptureById(scriptureId) {
 
 module.exports = {
   Note,
-  // Scripture,
+  Scripture,
   createNote,
   getNotes,
   getNoteById,
