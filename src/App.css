@@ -34,20 +34,40 @@ body {
   outline: none;
 }
 
+/* Center the card */
+.note-card {
+  position: fixed;
+  top: 50%; /* Adjust the vertical position */
+  left: 50%; /* Adjust the horizontal position */
+  transform: translate(-50%, -50%); /* Center the NoteCard */
+  width: 90%; /* Set the width */
+  max-width: 60%; /* Set maximum width */
+  height: 80vh; /* Set the height */
+  z-index: 999; /* Ensure the NoteCard is above other elements */
+}
+
 .note-card-header {
   display: flex;
   justify-content: space-between;
   padding: 2rem;
 }
 
-.note-card-address, .note-card-title {
+.note-card-address {
   color: var(--white);
   background-color: var(--gray);
   border: 0;
   font-family: var(--main-font);
   font-size: var(--h1);
   font-weight: 700;
-} .note-card-title {
+}
+
+.note-card-title {
+  font-size: var(--h2);
+  color: var(--white);
+  background-color: var(--gray);
+  border: 0;
+  font-family: var(--main-font);
+  font-weight: 700;
   text-align: right;
 }
 
@@ -56,11 +76,14 @@ body {
   border: 0;
   width: 90%;
   margin: 2rem;
-  height: 10rem;
+  height: 22rem;
   color: var(--white);
   font-size: var(--h2);
-} .note-card-content::placeholder {
-  color: var(--white);
+  resize:none;
+}
+
+.note-card-content::placeholder, .note-card-citation::placeholder {
+  color: var(--light-gray);
   font-size: var(--h2);
 }
 
@@ -72,19 +95,21 @@ body {
   margin: 2rem;
   color: var(--white);
   font-size: var(--h2);
-} .note-card-citation::placeholder {
-  color: var(--white);
-  font-size: var(--h2);
 }
 
 .note-card button {
-  background-color: var(--black);
-  border: 0;
-  border-radius: var(--border-radius);
+  background-color: var(--gray);
+  border: none;
   font-family: var(--main-font);
   font-size: var(--h2);
   color: var(--white);
   cursor: pointer;
+  padding-right: 2rem;
+}
+
+.note-card-footer {
+  display: flex;
+  justify-content: space-between;
 }
 
 /* Menubar */

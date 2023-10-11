@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFloppyDisk } from '@fortawesome/free-solid-svg-icons';
 
 function NoteCard({ onContentChange, onCitationChange }) {
   const [address, setAddress] = useState('');
@@ -45,14 +47,14 @@ function NoteCard({ onContentChange, onCitationChange }) {
         <input
           className="note-card-address"
           type="text"
-          placeholder="Address"
+          placeholder="address of the note"
           value={address}
           onChange={(e) => setAddress(e.target.value)}
         />
         <input
           className="note-card-title"
           type="text"
-          placeholder="Title"
+          placeholder="title of the note"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
@@ -60,20 +62,24 @@ function NoteCard({ onContentChange, onCitationChange }) {
       {/* Note card content */}
       <textarea
         className="note-card-content"
-        placeholder="Content"
+        placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim blandit volutpat maecenas volutpat blandit aliquam. Orci ac auctor augue mauris augue neque gravida in fermentum. Ut morbi tincidunt augue interdum velit euismod in pellentesque massa. A condimentum vitae sapien pellentesque habitant morbi tristique."
         value={content}
         onChange={handleContentChange}
       />
       {/* Note card footer */}
-      <input
-        className="note-card-citation"
-        type="text"
-        placeholder="Citation of the note"
-        value={citation}
-        onChange={handleCitationChange}
-      />
-      {/* Submit button */}
-      <button type="submit">Create Note</button>
+      <section className='note-card-footer'>
+        <input
+          className="note-card-citation"
+          type="text"
+          placeholder="citation of the note"
+          value={citation}
+          onChange={handleCitationChange}
+        />
+        {/* Submit button */}
+        <button type="submit">
+          <FontAwesomeIcon icon={faFloppyDisk} />
+        </button>
+      </section>
     </form>
   );
 }
