@@ -24,7 +24,7 @@ body {
 
 /* Main App */
 .main {
-  margin: 2rem 2rem 2rem 80px;
+  margin: 2rem 2rem 2rem 50px;
 }
 
 /* Create a Notecard */
@@ -124,7 +124,7 @@ body {
   position: fixed;
   left: 0;
   top: 0;
-  width: 60px;
+  width: 50px;
   height: 100%;
   background-color: var(--black);
   display: flex;
