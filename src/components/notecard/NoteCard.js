@@ -28,12 +28,12 @@ function NoteCard({ onContentChange, onCitationChange }) {
         content,
         citation,
       });
-      // Optionally, you can reset the form fields after successful submission
+      // Optionally, reset the form fields after successful submission
       setAddress('');
       setTitle('');
       setContent('');
       setCitation('');
-      // You can also add logic to handle success messages or redirects here, if needed.
+      // logic to handle success messages or redirects here, if needed.
     } catch (error) {
       console.error('Error creating note:', error);
     }

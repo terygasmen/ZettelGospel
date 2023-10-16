@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import NoteList from './components/notecard-list/NoteList';
 import MenuBar from './components/menubar/MenuBar';
 import { getNotes, createNote } from '../src/db/db';
+import CreatePage from './components/create-page/CreatePage';
 
 function App() {
   const [isTableView, setTableView] = useState(false);
@@ -37,15 +39,20 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <MenuBar
-        onNewNoteClick={handleNewNoteClick}
-        onTableViewClick={handleTableViewClick}
-      />
-      <div className="main">
-        <NoteList isTableView={isTableView} notes={notes} setNotes={setNotes} />
+    <Router>
+      <div className="App">
+        <MenuBar
+          onNewNoteClick={handleNewNoteClick}
+          onTableViewClick={handleTableViewClick}
+        />
+        <div className="main">
+        <Routes>
+          <Route path="/create" element={<CreatePage />} />
+          <Route path="/note-list" element={<NoteList isTableView={isTableView} notes={notes} setNotes={setNotes} />} />
+        </Routes>
+        </div>
       </div>
-    </div>
+    </Router>
   );
 }
 
