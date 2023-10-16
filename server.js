@@ -4,7 +4,8 @@ const noteRoutes = require('./routes/notes');
 const scriptureRoutes = require('./routes/scriptures');
 
 const app = express();
-app.use(express.json());
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
 
 mongoose.connect('mongodb+srv://terygasmen-cit490:Folie_31415@cluster0.tsmiomx.mongodb.net/zettelgospel', {
   useNewUrlParser: true,

@@ -17,6 +17,11 @@ body {
   color: var(--white);
 }
 
+.logo {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
 /* Main App */
 .main {
   margin: 2rem 2rem 2rem 80px;
@@ -138,8 +143,4 @@ body {
   cursor: pointer;
   color: white;
   font-size: 20px;
-}
-
-.menu-item:hover {
-  background-color: #555;
 }

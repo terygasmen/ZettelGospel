@@ -18,7 +18,7 @@ function MenuBar({ onNewNoteClick, onTableViewClick }) {
   return (
     <div className="menu-bar">
       <div className="menu-item logo">
-        <img src='../../logo.png' alt='ZettelGospel Logo'/>
+      <img src="/logo.png" alt="Logo" className="logo"/>
       </div>
       <div className="menu-item" onClick={onNewNoteClick}>
         <FontAwesomeIcon icon={faMagnifyingGlass} style={{color: "#c1c8ce",}}/>

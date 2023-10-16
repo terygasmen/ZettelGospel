@@ -1,0 +1,4 @@
+GET http://localhost:3001/api/scriptures
+
+### 
+GET http://localhost:3001/api/scriptures/651a8f98b3bf405abdd9933a
