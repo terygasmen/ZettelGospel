@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import './App.css';
 import NoteList from './components/notecard-list/NoteList';
 import MenuBar from './components/menubar/MenuBar';
@@ -46,10 +46,12 @@ function App() {
           onTableViewClick={handleTableViewClick}
         />
         <div className="main">
-        <Routes>
-          <Route path="/create" element={<CreatePage />} />
-          <Route path="/note-list" element={<NoteList isTableView={isTableView} notes={notes} setNotes={setNotes} />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<NoteList isTableView={isTableView} notes={notes} setNotes={setNotes} />} />
+            <Route path="/create" element={<CreatePage />} />
+            <Route path="/note-list" element={<NoteList isTableView={isTableView} notes={notes} setNotes={setNotes} />} />
+            <Route path="/*" element={<Navigate to="/" />} /> {/* Redirect to main page for unknown routes */}
+          </Routes>
         </div>
       </div>
     </Router>

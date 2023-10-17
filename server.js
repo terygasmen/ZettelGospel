@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const noteRoutes = require('./routes/notes');
 const scriptureRoutes = require('./routes/scriptures');
+const path = require('path');
 
 const app = express();
 // Serve static files from the 'public' directory
