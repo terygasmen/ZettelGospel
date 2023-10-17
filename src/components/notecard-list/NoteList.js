@@ -23,13 +23,20 @@ function NoteList() {
     <div className="note-list">
       {notes.map((note) => (
         <div key={note._id}>
-          {/* Pass note data to NoteCard component */}
+          {/* Pass note data and change handlers to NoteCard component */}
           <NoteCard
             address={note.address}
             title={note.title}
             content={note.content}
             citation={note.citation}
-            // Pass unique ID (note._id) if needed for update or delete operations
+            onContentChange={(content) => {
+              // Handle content change here
+              console.log(`Content changed for note with ID ${note._id}: ${content}`);
+            }}
+            onCitationChange={(citation) => {
+              // Handle citation change here
+              console.log(`Citation changed for note with ID ${note._id}: ${citation}`);
+            }}
           />
         </div>
       ))}
@@ -38,3 +45,4 @@ function NoteList() {
 }
 
 export default NoteList;
+

@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const noteRoutes = require('./routes/notes');
-const scriptureRoutes = require('./routes/scriptures');
 const path = require('path');
 
 const app = express();
@@ -20,9 +19,6 @@ db.once('open', () => {
   
   // API endpoints for notes
   app.use('/api/notes', noteRoutes);
-  
-  // API endpoints for scriptures
-  app.use('/api/scriptures', scriptureRoutes);
 
   const PORT = process.env.PORT || 3001;
   app.listen(PORT, () => {

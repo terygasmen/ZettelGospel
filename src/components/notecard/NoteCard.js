@@ -22,13 +22,14 @@ function NoteCard({ onContentChange, onCitationChange }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      // Send a POST request to server endpoint
       await axios.post('/api/notes', {
         address,
         title,
         content,
         citation,
       });
-      // Optionally, reset the form fields after successful submission
+      // reset the form fields after successful submission
       setAddress('');
       setTitle('');
       setContent('');

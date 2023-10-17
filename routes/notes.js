@@ -2,17 +2,6 @@ const express = require('express');
 const router = express.Router();
 const { Note } = require('../src/db/db');
 
-// Get all notes
-router.get('/notes', async (req, res) => {
-  try {
-    const notes = await Note.find();
-    res.status(200).json(notes);
-  } catch (error) {
-    console.error(error); // Log the actual error for debugging
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-});
-
 // Get a single note by ID
 router.get('/notes/:id', async (req, res) => {
   try {
@@ -23,6 +12,17 @@ router.get('/notes/:id', async (req, res) => {
     res.status(200).json(note);
   } catch (error) {
     console.error(error); 
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+// Get all notes
+router.get('/notes', async (req, res) => {
+  try {
+    const notes = await Note.find();
+    res.status(200).json(notes);
+  } catch (error) {
+    console.error(error); // Log the actual error for debugging
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
