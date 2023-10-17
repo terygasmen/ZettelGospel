@@ -1,10 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const noteRoutes = require('./routes/notes');
-const scriptureRoutes = require('./routes/scriptures');
+const path = require('path');
 
 const app = express();
-app.use(express.json());
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
 
 mongoose.connect('mongodb+srv://terygasmen-cit490:Folie_31415@cluster0.tsmiomx.mongodb.net/zettelgospel', {
   useNewUrlParser: true,
@@ -18,9 +19,6 @@ db.once('open', () => {
   
   // API endpoints for notes
   app.use('/api/notes', noteRoutes);
-  
-  // API endpoints for scriptures
-  app.use('/api/scriptures', scriptureRoutes);
 
   const PORT = process.env.PORT || 3001;
   app.listen(PORT, () => {
