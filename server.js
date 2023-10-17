@@ -4,6 +4,8 @@ const noteRoutes = require('./routes/notes');
 const path = require('path');
 
 const app = express();
+// Middleware to parse JSON data in the request body
+app.use(express.json());
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -18,7 +20,7 @@ db.once('open', () => {
   console.log('Connected to MongoDB');
   
   // API endpoints for notes
-  app.use('/api/notes', noteRoutes);
+  app.use('/api', noteRoutes);
 
   const PORT = process.env.PORT || 3001;
   app.listen(PORT, () => {
