@@ -21,6 +21,7 @@ function NoteCard({ onContentChange, onCitationChange }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('Submit button clicked');
     try {
       // Send a POST request to server endpoint
       await axios.post('/api/notes', {
@@ -63,7 +64,7 @@ function NoteCard({ onContentChange, onCitationChange }) {
       {/* Note card content */}
       <textarea
         className="note-card-content"
-        placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim blandit volutpat maecenas volutpat blandit aliquam. Orci ac auctor augue mauris augue neque gravida in fermentum. Ut morbi tincidunt augue interdum velit euismod in pellentesque massa. A condimentum vitae sapien pellentesque habitant morbi tristique."
+        placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim blandit volutpat maecenas volutpat blandit aliquam."
         value={content}
         onChange={handleContentChange}
       />

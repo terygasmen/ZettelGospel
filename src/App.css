@@ -24,14 +24,14 @@ body {
 
 /* Main App */
 .main {
-  margin: 2rem 2rem 2rem 50px;
+  margin: 2rem 2rem 2rem 85px;
 }
 
 .main-page {
   background-color: red;
 }
 
-/* Create a Notecard */
+/* Notecard */
 .note-card {
   background-color: var(--gray);
   padding: 1rem;
@@ -147,4 +147,9 @@ body {
   cursor: pointer;
   color: white;
   font-size: 20px;
+}
+
+/* Create Page */
+.note-list {
+  background-color: red;
 }

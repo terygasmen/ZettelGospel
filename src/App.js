@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import './App.css';
-import NoteList from './components/notecard-list/NoteList';
 import MenuBar from './components/menubar/MenuBar';
-import { getNotes, createNote } from '../src/db/db';
+import { getNotes } from '../src/db/db';
+import MainPage from './components/main-page/MainPage';
 import CreatePage from './components/create-page/CreatePage';
+import TableView from './components/table-view/TableView';
+import SearchPage from './components/search-page/SearchPage';
 
 function App() {
-  const [isTableView, setTableView] = useState(false);
   const [notes, setNotes] = useState([]);
 
   // Fetch notes when the component mounts
@@ -24,32 +25,16 @@ function App() {
     fetchNotes(); // Call the fetchNotes function
   }, []); // Empty dependency array ensures this effect runs once after the initial render
 
-  const handleNewNoteClick = async () => {
-    // Create a new note in the database
-    try {
-      const newNote = await createNote('', '', '', ''); // Provide initial values or empty strings as needed
-      setNotes([...notes, newNote]); // Add the new note to the current notes state
-    } catch (error) {
-      console.error('Error creating note:', error);
-    }
-  };
-
-  const handleTableViewClick = () => {
-    setTableView(!isTableView);
-  };
-
   return (
     <Router>
       <div className="App">
-        <MenuBar
-          onNewNoteClick={handleNewNoteClick}
-          onTableViewClick={handleTableViewClick}
-        />
+        <MenuBar />
         <div className="main">
           <Routes>
-            <Route path="/" element={<NoteList isTableView={isTableView} notes={notes} setNotes={setNotes} />} />
+            <Route path="/" element={<MainPage />} />
             <Route path="/create" element={<CreatePage />} />
-            <Route path="/note-list" element={<NoteList isTableView={isTableView} notes={notes} setNotes={setNotes} />} />
+            <Route path="/table-view" element={<TableView notes={notes} />} /> {/* Route for TableView */}
+            <Route path="/search" element={<SearchPage notes={notes} />} /> {/* Route for SearchPage */}
             <Route path="/*" element={<Navigate to="/" />} /> {/* Redirect to main page for unknown routes */}
           </Routes>
         </div>
