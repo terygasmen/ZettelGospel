@@ -12,6 +12,7 @@ const noteSchema = new Schema({
 
 const Note = mongoose.model('Note', noteSchema);
 
+
 // Create a new note
 async function createNote(address, title, content, citation) {
   const newNote = new Note({ address, title, content, citation });
@@ -40,7 +41,7 @@ async function deleteNote(noteId) {
 
 
 module.exports = {
-  Note,
+  Note: Note,
   createNote,
   getNoteById,
   getNotes,
