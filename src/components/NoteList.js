@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import NoteCard from '../notecard/NoteCard';
-import { getNotes } from '../../db/db';
+import NoteCard from './NoteCard';
+import { getNotes } from '../db/db';
 
 function NoteList() {
   const [notes, setNotes] = useState([]);

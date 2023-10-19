@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import './App.css';
-import MenuBar from './components/menubar/MenuBar';
+import MenuBar from './components/MenuBar';
 import { getNotes } from '../src/db/db';
-import MainPage from './components/main-page/MainPage';
-import CreatePage from './components/create-page/CreatePage';
-import TableView from './components/table-view/TableView';
-import SearchPage from './components/search-page/SearchPage';
+import MainPage from './components/MainPage';
+import CreatePage from './components/CreatePage';
+import TableView from './components/TableView';
+import SearchPage from './components/SearchPage';
 
 function App() {
   const [notes, setNotes] = useState([]);

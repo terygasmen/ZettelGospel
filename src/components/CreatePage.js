@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import NoteCard from '../notecard/NoteCard';
-import NoteList from '../notecard-list/NoteList';
+import NoteCard from './NoteCard';
+import NoteList from './NoteList';
 
 function CreatePage() {
   const [content, setContent] = useState('');
