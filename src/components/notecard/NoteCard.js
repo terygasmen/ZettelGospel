@@ -21,6 +21,7 @@ function NoteCard({ onContentChange, onCitationChange }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('Submit button clicked');
     try {
       // Send a POST request to server endpoint
       await axios.post('/api/notes', {

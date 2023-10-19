@@ -29,13 +29,13 @@ function NoteList() {
             title={note.title}
             content={note.content}
             citation={note.citation}
-            onContentChange={(content) => {
+            onContentChange={(newContent) => {
               // Handle content change here
-              console.log(`Content changed for note with ID ${note._id}: ${content}`);
+              console.log(`Content changed for note with ID ${note._id}: ${newContent}`);
             }}
-            onCitationChange={(citation) => {
+            onCitationChange={(newCitation) => {
               // Handle citation change here
-              console.log(`Citation changed for note with ID ${note._id}: ${citation}`);
+              console.log(`Citation changed for note with ID ${note._id}: ${newCitation}`);
             }}
           />
         </div>
@@ -45,4 +45,3 @@ function NoteList() {
 }
 
 export default NoteList;
-

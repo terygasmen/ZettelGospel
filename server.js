@@ -1,9 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors'); // Import the cors middleware
 const noteRoutes = require('./routes/notes');
 const path = require('path');
 
 const app = express();
+app.use(cors()); // Enable CORS for all routes
 // Middleware to parse JSON data in the request body
 app.use(express.json());
 // Serve static files from the 'public' directory
