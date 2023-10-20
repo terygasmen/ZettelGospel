@@ -27,10 +27,6 @@ body {
   margin: 2rem 2rem 2rem 85px;
 }
 
-.main-page {
-  background-color: red;
-}
-
 /* Notecard */
 .note-card {
   background-color: var(--gray);
@@ -140,16 +136,13 @@ body {
 
 .menu-item {
   width: 100%;
-  padding: 18px 0;
+  padding: 12px 0;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   color: white;
   font-size: 20px;
-}
-
-/* Create Page */
-.note-list {
-  background-color: red;
+}.menu-bar:hover {
+  cursor: pointer;
 }

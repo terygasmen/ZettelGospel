@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import NoteCard from '../notecard/NoteCard';
+import NoteCard from './NoteCard';
 
 function SearchPage({ notes }) {
   const [searchTerm, setSearchTerm] = useState('');

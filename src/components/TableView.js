@@ -1,5 +1,5 @@
 import React from 'react';
-import NoteList from '../notecard-list/NoteList';
+import NoteList from './NoteList';
 
 function TableView({ notes }) {
   // Customize the TableView layout and styles as needed
