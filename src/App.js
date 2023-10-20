@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import './App.css';
-import MenuBar from './components/MenuBar';
 import { getNotes } from '../src/db/db';
+import MenuBar from './components/MenuBar';
 import MainPage from './components/MainPage';
 import CreatePage from './components/CreatePage';
 import TableView from './components/TableView';

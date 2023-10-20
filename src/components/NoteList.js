@@ -1,23 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import NoteCard from './NoteCard';
 import { getNotes } from '../db/db';
+import NoteCard from './NoteCard';
 
 function NoteList() {
   const [notes, setNotes] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Fetch notes when the component mounts
   useEffect(() => {
+    console.log('NoteList component mounted');
     async function fetchNotes() {
       try {
-        const fetchedNotes = await getNotes(); // Fetch notes from the database
-        setNotes(fetchedNotes); // Set notes in the local state
+        console.log('Fetching notes...');
+        const fetchedNotes = await getNotes();
+        console.log('Notes fetched:', fetchedNotes);
+        setNotes(fetchedNotes);
+        setIsLoading(false);
+        console.log('Loading state set to false');
       } catch (error) {
         console.error('Error fetching notes:', error);
+        setIsLoading(false);
       }
     }
 
-    fetchNotes(); // Call the fetchNotes function
-  }, []); // Empty dependency array ensures this effect runs once after the initial render
+    fetchNotes();
+  }, []);
+
+  if (isLoading) {
+    console.log('Rendering loading message');
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="note-list">
