@@ -7,7 +7,7 @@ const Note = ({ id, address, title, text, citation, handleDeleteNote }) => {
 				<span className='note-address'>{address}</span>
 				<span className='note-title'>{title}</span>
 			</section>
-			<span>{text}</span>
+			<span className='note-content'>{text}</span>
 			<div className='note-footer'>
 				<small className='note-citation'>{citation}</small>
 				<AiFillMinusCircle
