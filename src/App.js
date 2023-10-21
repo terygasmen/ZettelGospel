@@ -17,15 +17,7 @@ const App = () => {
 	]);
 
 	const [searchText, setSearchText] = useState('');
-    	const [isSearchVisible, setIsSearchVisible] = useState(false);
 	const [isTableView, setIsTableView] = useState(false);
-
-	const handleToggleSearch = () => {
-		setIsSearchVisible(!isSearchVisible);
-	};
-	const handleCloseSearch = () => {
-		setIsSearchVisible(false);
-	};
 	
 	const handleToggleTableView = () => {
 		setIsTableView(!isTableView);
@@ -68,17 +60,9 @@ const App = () => {
 	return (
 		<div className='container'>
 			<Header 
-				handleToggleSearch={handleToggleSearch} 
-				handleSearchNote={setSearchText} 
-				handleToggleTableView={() => setIsTableView(!isTableView)} 
+				handleToggleTableView={handleToggleTableView} 
 			/>
-			{isSearchVisible && (
-				<Search
-					handleSearchNote={setSearchText}
-					handleCloseSearch={handleCloseSearch}
-				/>
-
-			)}
+			<Search handleSearchNote={setSearchText} />
 			{isTableView ? (
 				<TableView notes={notes} handleDeleteNote={deleteNote} />
 			) : (
