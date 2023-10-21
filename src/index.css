@@ -70,6 +70,7 @@ button {
 
 .note.new {
 	background-color: var(--gray);
+  border: 1px solid var(--light-gray);
 }
 
 textarea {
@@ -201,3 +202,21 @@ textarea:focus {
   font-size: 16px;
   cursor: pointer;
 }
+
+/* Table View */
+
+.table-view table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-view thead {
+  border-bottom: 1.5px solid var(--gray);
+}
+
+.table-view th, .table-view td {
+  padding: 12px; 
+  text-align: left;
+}
+
+

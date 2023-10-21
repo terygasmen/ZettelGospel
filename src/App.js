@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid';
 import NotesList from './components/NotesList';
 import Header from './components/Header';
 import Search from './components/Search';
+import TableView from './components/TableView';
 
 const App = () => {
 	const [notes, setNotes] = useState([
@@ -17,6 +18,7 @@ const App = () => {
 
 	const [searchText, setSearchText] = useState('');
     	const [isSearchVisible, setIsSearchVisible] = useState(false);
+	const [isTableView, setIsTableView] = useState(false);
 
 	const handleToggleSearch = () => {
 		setIsSearchVisible(!isSearchVisible);
@@ -24,6 +26,10 @@ const App = () => {
 	const handleCloseSearch = () => {
 		setIsSearchVisible(false);
 	};
+	
+	const handleToggleTableView = () => {
+		setIsTableView(!isTableView);
+	      };
 
 	useEffect(() => {
 		const savedNotes = JSON.parse(
@@ -61,7 +67,11 @@ const App = () => {
 
 	return (
 		<div className='container'>
-		    <Header handleToggleSearch={handleToggleSearch} handleSearchNote={setSearchText} />
+			<Header 
+				handleToggleSearch={handleToggleSearch} 
+				handleSearchNote={setSearchText} 
+				handleToggleTableView={() => setIsTableView(!isTableView)} 
+			/>
 			{isSearchVisible && (
 				<Search
 					handleSearchNote={setSearchText}
@@ -69,13 +79,17 @@ const App = () => {
 				/>
 
 			)}
-		    <NotesList
-			notes={notes.filter((note) =>
-			    note.text && note.text.toLowerCase().includes(searchText)
-			)}
-			handleAddNote={addNote}
-			handleDeleteNote={deleteNote}
-		    />
+			{isTableView ? (
+				<TableView notes={notes} handleDeleteNote={deleteNote} />
+			) : (
+				<NotesList
+					notes={notes.filter((note) =>
+					note.text && note.text.toLowerCase().includes(searchText)
+					)}
+					handleAddNote={addNote}
+					handleDeleteNote={deleteNote}
+				/>
+			)}	
 		</div>
 	);
 };
