@@ -4,81 +4,72 @@ import NotesList from './components/NotesList';
 import Header from './components/Header';
 import Search from './components/Search';
 import TableView from './components/TableView';
+import GroupedNotesList from './components/GroupedNotesList';
 
 const App = () => {
-	const [notes, setNotes] = useState([
-		{
-			id: nanoid(),
-			address: 'a1',
-			title: 'sample note',
-			text: 'This is a sample note',
-			citation: 'nikola tesla',
-		},
-	]);
+  const [notes, setNotes] = useState([
+    {
+      id: nanoid(),
+      address: 'a1',
+      title: 'sample note',
+      text: 'This is a sample note',
+      citation: 'nikola tesla',
+    },
+  ]);
 
-	const [searchText, setSearchText] = useState('');
-	const [isTableView, setIsTableView] = useState(false);
-	
-	const handleToggleTableView = () => {
-		setIsTableView(!isTableView);
-	      };
+  const [searchText, setSearchText] = useState('');
+  const [isTableView, setIsTableView] = useState(false);
+  const [showGroupedNotes, setShowGroupedNotes] = useState(false);
 
-	useEffect(() => {
-		const savedNotes = JSON.parse(
-			localStorage.getItem('react-notes-app-data')
-		);
+  const handleToggleTableView = () => {
+    setIsTableView(!isTableView);
+  };
 
-		if (savedNotes) {
-			setNotes(savedNotes);
-		}
-	}, []);
+  useEffect(() => {
+    const savedNotes = JSON.parse(localStorage.getItem('react-notes-app-data'));
 
-	useEffect(() => {
-		localStorage.setItem(
-			'react-notes-app-data',
-			JSON.stringify(notes)
-		);
-	}, [notes]);
+    if (savedNotes) {
+      setNotes(savedNotes);
+    }
+  }, []);
 
-	const addNote = (address, title, text, citation) => {
-		const newNote = {
-			id: nanoid(),
-			address: address,
-			title: title,
-			text: text,
-			citation: citation,
-		};
-		const newNotes = [...notes, newNote];
-		setNotes(newNotes);
-	};
+  useEffect(() => {
+    localStorage.setItem('react-notes-app-data', JSON.stringify(notes));
+  }, [notes]);
 
-	const deleteNote = (id) => {
-		const newNotes = notes.filter((note) => note.id !== id);
-		setNotes(newNotes);
-	};
+  const addNote = (address, title, text, citation) => {
+    const newNote = {
+      id: nanoid(),
+      address: address,
+      title: title,
+      text: text,
+      citation: citation,
+    };
+    const newNotes = [...notes, newNote];
+    setNotes(newNotes);
+  };
 
-	return (
-		<div className='container'>
-			<Header 
-				handleToggleTableView={handleToggleTableView} 
-			/>
-			<Search handleSearchNote={setSearchText} />
-			{isTableView ? (
-				<TableView notes={notes.filter((note) => 
-					note.text.toLowerCase().includes(searchText))} 
-					handleDeleteNote={deleteNote} />
+  const deleteNote = (id) => {
+    const newNotes = notes.filter((note) => note.id !== id);
+    setNotes(newNotes);
+  };
 
-			) : (
-				<NotesList
-					notes={notes.filter((note) =>
-					note.text && note.text.toLowerCase().includes(searchText)
-					)}
-					handleAddNote={addNote}
-					handleDeleteNote={deleteNote}
-				/>
-			)}	
-		</div>
-	);
+  return (
+    <div className='container'>
+      <Header
+        handleToggleTableView={handleToggleTableView}
+        handleToggleGroupedNotes={() => setShowGroupedNotes(!showGroupedNotes)}
+      />
+      <Search handleSearchNote={setSearchText} />
+      {showGroupedNotes ? (
+        <GroupedNotesList notes={notes} />
+      ) : isTableView ? (
+        <TableView notes={notes.filter((note) => note.text.toLowerCase().includes(searchText))} handleDeleteNote={deleteNote} />
+      ) : (
+        <NotesList notes={notes.filter((note) => note.text.toLowerCase().includes(searchText))} handleAddNote={addNote} handleDeleteNote={deleteNote} />
+      )}
+    </div>
+  );
 };
 
 export default App;
