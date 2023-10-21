@@ -1,16 +1,16 @@
 import React from 'react';
-import { MdSearch } from 'react-icons/md';
+import { FaSearch } from 'react-icons/fa';
 
 const Search = ({ handleSearchNote }) => {
 	return (
 		<div className='search'>
-			<MdSearch className='search-icons' size='1.3em' />
+			<FaSearch className='search-icon' size='1.2em' />
 			<input
 				onChange={(event) =>
 					handleSearchNote(event.target.value)
 				}
 				type='text'
-				placeholder='type to search...'
+				placeholder='Cmd + K'
 			/>
 		</div>
 	);
