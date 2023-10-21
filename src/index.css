@@ -69,18 +69,16 @@ button {
 }
 
 .note.new {
-	background-color: var(--gray);
+	background-color: var(--black);
   border: 1px solid var(--light-gray);
 }
 
 textarea {
 	border: none;
 	resize: none;
-	background-color: var(--gray);
+	background-color: var(--black);
   color: var(--white);
-}
-
-textarea:focus {
+}textarea:focus {
 	outline: none;
 }
 
@@ -106,7 +104,7 @@ textarea:focus {
 
 .note input {
   border: none;
-  background-color: var(--gray);
+  background-color: var(--black);
   color: var(--white);
   min-width: 6rem;
 }.note input::placeholder {
