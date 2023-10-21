@@ -1,13 +1,203 @@
+:root {
+  --main-font: 'Roboto Mono', monospace;
+  --black: #34373a;
+  --white: #D8E1E9;
+  --gray: #5a6066;
+  --light-gray: #c1c8ce;
+  --border-radius: 0.5rem;
+  --h1: 2rem;
+  --h2: 1.5rem;
+}
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+		'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+		'Droid Sans', 'Helvetica Neue', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+  background-color: var(--black);
+  color: var(--white);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas,
+		'Courier New', monospace;
+}
+
+.logo {
+  width: 2.3rem;
+  padding: 0.7rem 0 0.2rem 0;
+}
+
+button {
+  background: none;
+  border: none;
+} button:hover {
+  cursor: pointer;
+}
+
+.header {
+	position: fixed;
+  left: 0;
+  top: 0;
+  width: 45px;
+  height: 100%;
+  background-color: var(--black);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1.5px solid var(--gray);
+}
+.header .menu-item {
+  padding: 0.6rem 0;
+}
+
+.container {
+  margin: 1rem 1rem 1rem 45px;
+	padding: 0.5rem 2rem 2rem 2rem;
+	min-height: 100vh;
+}
+
+.notes-list {
+	display: grid;
+	grid-gap: 1rem;
+	grid-template-columns: repeat(
+		auto-fill,
+		minmax(260px, 1fr)
+	);
+}
+
+.note.new {
+	background-color: var(--gray);
+}
+
+textarea {
+	border: none;
+	resize: none;
+	background-color: var(--gray);
+  color: var(--white);
+}
+
+textarea:focus {
+	outline: none;
+}
+
+.save {
+  background: none;
+  border: none;
+}
+
+.save:hover {
+	cursor: pointer;
+}
+
+.note {
+  background-color: var(--gray);
+	border-radius: 10px;
+	padding: 1rem;
+	min-height: 170px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	white-space: pre-wrap;
+}
+
+.note input {
+  border: none;
+  background-color: var(--gray);
+  color: var(--white);
+  min-width: 6rem;
+}.note input::placeholder {
+  color: var(--white);
+}.note input:focus {
+	outline: none;
+}
+
+.note-header {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 0.5rem;
+}
+
+.note-address {
+  font-size: large;
+  font-weight: bold;
+}
+.note-title {
+  font-size: small;
+  text-align: right;
+  font-weight: bold;
+}
+.note-citation {
+  font-style: italic;
+}
+
+.note-footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.delete-icon {
+	cursor: pointer;
+}
+
+.search {
+	display: flex;
+	align-items: center;
+	background-color: var(--gray);
+	border-radius: 10px;
+	padding: 5px;
+	margin-bottom: 1.5em;
+}
+
+.search input {
+	border: none;
+	background-color: var(--gray);
+	width: 100%;
+}
+
+.search input:focus {
+	outline: none;
+}
+
+.search input::placeholder, textarea::placeholder {
+  color: var(--light-gray);
+}
+
+/* search component */
+
+.search-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.search-modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.search-modal input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.search-modal button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
 }

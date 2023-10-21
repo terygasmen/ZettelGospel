@@ -1,46 +1,83 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import './App.css';
-import { getNotes } from '../src/db/db';
-import MenuBar from './components/MenuBar';
-import MainPage from './components/MainPage';
-import CreatePage from './components/CreatePage';
-import TableView from './components/TableView';
-import SearchPage from './components/SearchPage';
+import { nanoid } from 'nanoid';
+import NotesList from './components/NotesList';
+import Header from './components/Header';
+import Search from './components/Search';
 
-function App() {
-  const [notes, setNotes] = useState([]);
+const App = () => {
+	const [notes, setNotes] = useState([
+		{
+			id: nanoid(),
+			address: 'a1',
+			title: 'sample note',
+			text: 'This is a sample note',
+			citation: 'nikola tesla',
+		},
+	]);
 
-  // Fetch notes when the component mounts
-  useEffect(() => {
-    async function fetchNotes() {
-      try {
-        const fetchedNotes = await getNotes(); // Fetch notes from the database
-        setNotes(fetchedNotes); // Set notes in the local state
-      } catch (error) {
-        console.error('Error fetching notes:', error);
-      }
-    }
+	const [searchText, setSearchText] = useState('');
+    	const [isSearchVisible, setIsSearchVisible] = useState(false);
 
-    fetchNotes(); // Call the fetchNotes function
-  }, []); // Empty dependency array ensures this effect runs once after the initial render
+	const handleToggleSearch = () => {
+		setIsSearchVisible(!isSearchVisible);
+	};
+	const handleCloseSearch = () => {
+		setIsSearchVisible(false);
+	};
 
-  return (
-    <Router>
-      <div className="App">
-        <MenuBar />
-        <div className="main">
-          <Routes>
-            <Route path="/" element={<MainPage />} />
-            <Route path="/create" element={<CreatePage />} />
-            <Route path="/table-view" element={<TableView notes={notes} />} /> {/* Route for TableView */}
-            <Route path="/search" element={<SearchPage notes={notes} />} /> {/* Route for SearchPage */}
-            <Route path="/*" element={<Navigate to="/" />} /> {/* Redirect to main page for unknown routes */}
-          </Routes>
-        </div>
-      </div>
-    </Router>
-  );
-}
+	useEffect(() => {
+		const savedNotes = JSON.parse(
+			localStorage.getItem('react-notes-app-data')
+		);
+
+		if (savedNotes) {
+			setNotes(savedNotes);
+		}
+	}, []);
+
+	useEffect(() => {
+		localStorage.setItem(
+			'react-notes-app-data',
+			JSON.stringify(notes)
+		);
+	}, [notes]);
+
+	const addNote = (address, title, text, citation) => {
+		const newNote = {
+			id: nanoid(),
+			address: address,
+			title: title,
+			text: text,
+			citation: citation,
+		};
+		const newNotes = [...notes, newNote];
+		setNotes(newNotes);
+	};
+
+	const deleteNote = (id) => {
+		const newNotes = notes.filter((note) => note.id !== id);
+		setNotes(newNotes);
+	};
+
+	return (
+		<div className='container'>
+		    <Header handleToggleSearch={handleToggleSearch} handleSearchNote={setSearchText} />
+			{isSearchVisible && (
+				<Search
+					handleSearchNote={setSearchText}
+					handleCloseSearch={handleCloseSearch}
+				/>
+
+			)}
+		    <NotesList
+			notes={notes.filter((note) =>
+			    note.text && note.text.toLowerCase().includes(searchText)
+			)}
+			handleAddNote={addNote}
+			handleDeleteNote={deleteNote}
+		    />
+		</div>
+	);
+};
 
 export default App;
