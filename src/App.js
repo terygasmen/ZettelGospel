@@ -64,7 +64,10 @@ const App = () => {
 			/>
 			<Search handleSearchNote={setSearchText} />
 			{isTableView ? (
-				<TableView notes={notes} handleDeleteNote={deleteNote} />
+				<TableView notes={notes.filter((note) => 
+					note.text.toLowerCase().includes(searchText))} 
+					handleDeleteNote={deleteNote} />
+
 			) : (
 				<NotesList
 					notes={notes.filter((note) =>

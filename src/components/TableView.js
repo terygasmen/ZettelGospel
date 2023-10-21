@@ -1,7 +1,8 @@
 import React from 'react';
-// import NotesList from './NotesList';
+import { customSort } from './NotesList';
 
 const TableView = ({ notes }) => {
+  const sortedNotes = [...notes].sort(customSort);
   return (
     <div className="table-view">
       <table>
@@ -14,7 +15,7 @@ const TableView = ({ notes }) => {
           </tr>
         </thead>
         <tbody>
-          {notes.map((note) => (
+          {sortedNotes.map((note) => (
             <tr key={note.id}>
                 <td>{note.address}</td>
                 <td>{note.title}</td>

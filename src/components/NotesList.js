@@ -2,7 +2,7 @@ import React from 'react';
 import Note from './Note';
 import AddNote from './AddNote';
 
-const customSort = (a, b) => {
+export const customSort = (a, b) => {
 	const segmentRegex = /([a-zA-Z]+|-?\d+)/g;
 
 	const getSegments = (address) => {
