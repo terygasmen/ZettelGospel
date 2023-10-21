@@ -59,7 +59,7 @@ button {
 	min-height: 100vh;
 }
 
-.notes-list {
+.notes-list, .grouped, .note-group {
 	display: grid;
 	grid-gap: 1rem;
 	grid-template-columns: repeat(
@@ -190,4 +190,28 @@ textarea {
   text-align: left;
 }
 
+/* Stacked Notes */
 
+.stacked-note {
+  /* Your existing card styles */
+  width: auto;
+  height: 200px;
+  box-shadow: 3px 2px 5px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.stacked-note.note {
+  z-index: 1;
+}
+
+.stacked-note.note + .note {
+  margin-top: -210px; /* Adjust this value based on your design */
+  z-index: 2;
+}
+
+.stacked-note.note + .note + .note {
+  margin-top: -210px; /* Adjust this value based on your design */
+  z-index: 3;
+}

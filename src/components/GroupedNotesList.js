@@ -21,14 +21,22 @@ const GroupedNotesList = ({ notes }) => {
   const groupedNotes = groupNotesByTopLevelBranch(notes);
 
   return (
-    <div className='container'>
+    <div className='grouped'>
       {Object.keys(groupedNotes).map((topLevelBranch) => (
         <div key={topLevelBranch} className='note-group'>
-          <h2>{topLevelBranch}</h2>
           <div className='stacked-notes'>
             {groupedNotes[topLevelBranch].map((note, index) => (
-              <div key={note.id} className='stacked-note' style={{ zIndex: index }}>
-                {note.title} - {note.text}
+              <div key={note.id} className='stacked-note note' style={{ zIndex: notes.length - index }}>
+                <div className='note-details'>
+                  <section className='note-header'>
+                    <span className='note-address'>{note.address}</span>
+                    <span className='note-title'>{note.title}</span>
+                  </section>
+                  <span className='note-content'>{note.text}</span>
+                  <div className='note-footer'>
+                    <small className='note-citation'>{note.citation}</small>
+                  </div>
+                </div>
               </div>
             ))}
           </div>

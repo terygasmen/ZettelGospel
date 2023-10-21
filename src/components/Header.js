@@ -11,11 +11,11 @@ const Header = ({ handleToggleTableView, handleToggleGroupedNotes }) => {
                 <button className='save menu-item' onClick={handleToggleTableView}>
                         <FaTableColumns size='1.4em' color='#c1c8ce'/>
                 </button>
-                <button className='menu-item'>
-                        <BsFillBookmarkStarFill size='1.4em' color='#c1c8ce'/>
-                </button>
                 <button className='menu-item' onClick={handleToggleGroupedNotes}>
                         <TbCardsFilled size='1.6em' color='#c1c8ce' strokeWidth='0.04rem'/>
+                </button>
+                <button className='menu-item'>
+                        <BsFillBookmarkStarFill size='1.4em' color='#c1c8ce'/>
                 </button>
         </div>
     );
