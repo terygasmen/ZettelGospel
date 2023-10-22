@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const GroupedNotesList = ({ notes }) => {
+  const [clickedStack, setClickedStack] = useState(null);
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const handleStackClick = (stackIndex) => {
+    setClickedStack(stackIndex);
+    setIsExpanded(!isExpanded);
+  };
+
   const groupNotesByTopLevelBranch = (notes) => {
     const groupedNotes = {};
 
@@ -22,8 +30,12 @@ const GroupedNotesList = ({ notes }) => {
 
   return (
     <div className='grouped'>
-      {Object.keys(groupedNotes).map((topLevelBranch) => (
-        <div key={topLevelBranch} className='note-group'>
+      {Object.keys(groupedNotes).map((topLevelBranch, stackIndex) => (
+        <div
+          key={topLevelBranch}
+          className={`note-group ${clickedStack === stackIndex ? 'clicked-stack' : ''}`}
+          onClick={() => handleStackClick(stackIndex)}
+        >
           <div className='stacked-notes'>
             {groupedNotes[topLevelBranch].map((note, index) => (
               <div key={note.id} className='stacked-note note' style={{ zIndex: notes.length - index }}>

@@ -95,7 +95,7 @@ textarea {
   background-color: var(--gray);
 	border-radius: 10px;
 	padding: 1rem;
-	height: 180px;
+	height: 200px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -207,11 +207,14 @@ textarea {
 }
 
 .stacked-note.note + .note {
-  margin-top: -210px; /* Adjust this value based on your design */
-  z-index: 2;
+  margin-top: -210px; 
 }
 
 .stacked-note.note + .note + .note {
-  margin-top: -210px; /* Adjust this value based on your design */
+  margin-top: -210px; 
   z-index: 3;
+}
+
+.clicked-stack .stacked-note:not(:last-child) {
+  margin-bottom: 215px; 
 }
